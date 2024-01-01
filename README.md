@@ -28,4 +28,4 @@ Before i begin, i ensured i had:
 - A tool for interacting with the database
 
   ## Most Language used
-[![Top Langs](https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api/top-langs/?username=anuraghazra)](https://github.com/K09Gaurav/SQL_project_Covid)
+[![Top Langs](https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api/top-langs/?username=K09Gaurav)](https://github.com/K09Gaurav/SQL_project_Covid)
