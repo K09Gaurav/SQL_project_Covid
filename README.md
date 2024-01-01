@@ -1,6 +1,7 @@
 # SQL Project on Covid
 ### Project work is done on Microsoft SQL Server management Server.
 All of the Data (Covid Deaths and Vaccination reports) are from "https://ourworldindata.org/covid-deaths".
+Total Records = "365536" in each table
 
 ## Overview
 
