@@ -71,12 +71,17 @@ where continent IS NOT NULL AND location='india'
 Order by location, date;
 
 -- Calculated Highest Date of Death Percent in INDIA 
-select continent, location, date, population, total_cases, new_cases, total_deaths,(cast(total_deaths as float)/cast(total_cases as float))*100 as Death_Percent
+select location, date, total_cases, new_cases, total_deaths,(cast(total_deaths as float)/cast(total_cases as float))*100 as Death_Percent
 from SQL_COVID..Deaths 
-where continent IS NOT NULL AND location='india' 
+where location='india' 
 Order by Death_Percent DESC;
 -- IT was on "2020-05-06" and the Death percentage was "3.42977465530157 %"
 
 
---
+--Calculated Total percentage of population died at the end of 2023
+select continent, location, date, population, total_cases, new_cases, total_deaths,(cast(total_deaths as float)/cast(total_cases as float))*100 as Death_Percent
+from SQL_COVID..Deaths 
+where continent IS NOT NULL AND location='india'
+Order by location, date;
+-- It was "0.0376323818504263"
 
