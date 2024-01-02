@@ -48,4 +48,11 @@ from SQL_COVID..Deaths
 where continent IS NOT NULL AND location='india'
 Order by location, date;
 
+-- Calculated Highest Date of Death Percen in INDIA  by
+select continent, location, date, population, total_cases, new_cases, total_deaths,(cast(total_deaths as float)/cast(total_cases as float))*100 as Death_Percent
+from SQL_COVID..Deaths 
+where continent IS NOT NULL AND location='india' 
+Order by Death_Percent DESC;
+
+-- IT was on "2020-05-06" and the Death percentage was "3.42977465530157 %"
 
