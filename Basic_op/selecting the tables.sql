@@ -33,10 +33,10 @@ Order by location, date;
 --Table of Deaths will be First
 
 
-select continent, location, date, population, total_cases, new_cases, total_deaths,(cast(total_deaths as float)/cast(total_cases as float))*100 as Death_Percent
+select continent, location, date, population, total_cases, new_cases
 from SQL_COVID..Deaths 
 where continent IS NOT NULL AND location='india' AND total_cases IS NOT NULL
-Order by location, date, Death_Percent DESC;
+Order by location, date;
 --By observation it was found that the first CASE OF COVID IN INDIA was on "2020-01-30"
 
 
