@@ -32,7 +32,15 @@ Order by location, date;
 --Now that the Data has been Norrowed I will First analyse the tables one by one and derive interesting points off it
 --Table of Deaths will be First
 
---Will calculate the Death Percentage of the day
+
+select continent, location, date, population, total_cases, new_cases, total_deaths,(cast(total_deaths as float)/cast(total_cases as float))*100 as Death_Percent
+from SQL_COVID..Deaths 
+where continent IS NOT NULL AND location='india' AND total_cases IS NOT NULL
+Order by location, date, Death_Percent DESC;
+--By observation it was found that the first CASE OF COVID IN INDIA was on "2020-01-30"
+
+
+--Will calculate the overall Death Percentage among the Infected
 --by using Total Cases and Total Deaths
 
 select continent, location, date, population, total_cases, new_cases, total_deaths,(total_deaths/total_cases)*100 as Death_Percent
@@ -55,4 +63,6 @@ where continent IS NOT NULL AND location='india'
 Order by Death_Percent DESC;
 
 -- IT was on "2020-05-06" and the Death percentage was "3.42977465530157 %"
+
+--
 
