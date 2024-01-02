@@ -123,4 +123,9 @@ Order by highest_infection_count desc;
 
 
 -- country with highest death count
-
+select TOP 1 location, population, MAX(cast(total_deaths as float)) as highest_death_count
+from SQL_COVID..Deaths 
+where continent IS NOT NULL
+group by continent, location, population
+Order by highest_death_count desc;
+--          United States	338289856	1144877
