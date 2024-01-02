@@ -28,6 +28,7 @@ where continent IS NOT NULL AND location IS NOT NULL
 Order by location, date;
 
 
+--These analysis will be on The country "India"
 
 --Now that the Data has been Norrowed I will First analyse the tables one by one and derive interesting points off it
 --Table of Deaths will be First
@@ -47,6 +48,11 @@ Order by location,new_cases desc;
 --By observation it was found that the highest number of Cases registered in a single day 
 --was on "2021-05-07" and it was a total of "4,14,188"
 
+select location, date, population, total_cases, new_cases, total_deaths , new_deaths
+from SQL_COVID..Deaths 
+where location = 'India' AND new_deaths <> 0
+Order by location,date, new_deaths;
+----By observation it was found that the first DEATH DUE TO COVID IN INDIA was on "2020-03-13"
 
 
 --Will calculate the overall Death Percentage among the Infected
@@ -56,7 +62,6 @@ select continent, location, date, population, total_cases, new_cases, total_deat
 from SQL_COVID..Deaths 
 where continent IS NOT NULL AND location='india'
 Order by location, date;
-
 -- UNFORTUNATELY the code above was not working due to total deaths and total cases were in the format of nvarchar which apparently does not support aggregation functions
 -- So what i did was i typecasted them into float for the calculation purposes
 
@@ -70,8 +75,8 @@ select continent, location, date, population, total_cases, new_cases, total_deat
 from SQL_COVID..Deaths 
 where continent IS NOT NULL AND location='india' 
 Order by Death_Percent DESC;
-
 -- IT was on "2020-05-06" and the Death percentage was "3.42977465530157 %"
+
 
 --
 
