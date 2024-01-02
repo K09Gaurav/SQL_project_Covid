@@ -79,9 +79,11 @@ Order by Death_Percent DESC;
 
 
 --Calculated Total percentage of population died at the end of 2023
-select continent, location, date, population, total_cases, new_cases, total_deaths,(cast(total_deaths as float)/cast(total_cases as float))*100 as Death_Percent
+select location, date, population, total_cases, new_cases, total_deaths,new_deaths, (cast(total_deaths as float)/cast(population as float))*100 as Death_Percent
 from SQL_COVID..Deaths 
-where continent IS NOT NULL AND location='india'
+where location='india'
 Order by location, date;
 -- It was "0.0376323818504263"
+
+
 
