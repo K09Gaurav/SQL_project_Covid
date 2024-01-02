@@ -89,3 +89,25 @@ Order by location, date;
 
 
 
+--NOW ANALYSING DATA of diff countries
+
+select location, population, MAX(total_cases) as highest_infection_count
+from SQL_COVID..Deaths 
+group by location, population
+Order by location;
+--selected highest cases country wise
+
+--How much Population is infected?
+select location, population, MAX(total_cases) as highest_infection_count, MAX(total_cases/population)*100 as InfectionPercentage
+from SQL_COVID..Deaths 
+group by location, population
+Order by location;
+
+
+--HIghest infection Percentage
+select location, population, MAX(total_cases) as highest_infection_count, MAX((total_cases/population)*100) as InfectionPercentage
+from SQL_COVID..Deaths 
+group by location, population
+Order by InfectionPercentage desc;
+--Country with highest percentage wrt to their population
+--San Marino	Population="33690"	total cases="25292"	    InfectionPercentage="75.0727218759276"
