@@ -28,10 +28,12 @@ where continent IS NOT NULL AND location IS NOT NULL
 Order by location, date;
 
 
---These analysis will be on The country "India"
 
 --Now that the Data has been Norrowed I will First analyse the tables one by one and derive interesting points off it
 --Table of Deaths will be First
+
+
+--Analysing indivisual country data for The country "India"
 
 
 select continent, location, date, population, total_cases, new_cases
