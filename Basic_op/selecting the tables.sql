@@ -111,3 +111,16 @@ group by location, population
 Order by InfectionPercentage desc;
 --Country with highest percentage wrt to their population
 --San Marino	Population="33690"	total cases="25292"	    InfectionPercentage="75.0727218759276"
+
+
+--Countriy with highest no of cases registered
+select TOP 1 location, population, MAX(cast(total_cases as float)) as highest_infection_count
+from SQL_COVID..Deaths 
+where continent IS NOT NULL
+group by continent, location, population
+Order by highest_infection_count desc;
+--          United States	338289856	103436829
+
+
+-- country with highest death count
+
