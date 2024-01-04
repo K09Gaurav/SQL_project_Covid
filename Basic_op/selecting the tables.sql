@@ -106,6 +106,19 @@ order by date
 --ACC TO Data first day of vaccination was on 2021-01-16 with no of vaccinations as 191181
 
 
+select top 1 location, date, cast(total_tests as float) as total_tests, new_tests
+from SQL_COVID..Vaccine
+where location = 'India' 
+order by new_tests desc
+-- Highest no of tests in 1 day was on 2020-10-17 with no of teste be 999090
+
+select TOP 1 location, DATE, (CAST(total_vaccinations as float)) as VACCNINED
+from SQL_COVID..Vaccine
+WHERE location = 'India'
+order by VACCNINED DESC
+-- tOTAL NO OF VACCINES = 2206751639
+
+
 
 
 
@@ -158,3 +171,11 @@ where continent IS NOT NULL
 group by continent, location, population
 Order by highest_death_count desc;
 --          United States	338289856	1144877
+
+
+
+select location, MAX(CAST(total_vaccinations as float)) as VACCNINED
+from SQL_COVID..Vaccine
+group by location
+order by VACCNINED DESC
+--COUNTRY WITH HiGHEST NO OF VACCINATION IS CHINA WITH ="3491077000"
