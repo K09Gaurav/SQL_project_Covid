@@ -89,6 +89,19 @@ Order by location, date;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 --NOW ANALYSING DATA of diff countries
 
 select location, population, MAX(total_cases) as highest_infection_count
