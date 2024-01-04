@@ -89,6 +89,22 @@ Order by location, date;
 
 
 
+--Table of --Table of Vaccine now
+
+select TOP 1 location, date, total_tests, new_tests, total_vaccinations, people_vaccinated 
+from SQL_COVID..Vaccine
+where location = 'India' AND total_tests IS NOT NULL
+order by date ASC
+--ACC TO DATA First day of recording no of tests was on "2020-03-13" and it was 6500'
+
+
+select location, date, cast(total_tests as float) as total_tests, new_tests, 
+	cast(total_vaccinations as float) as total_vaccinations, people_vaccinated 
+from SQL_COVID..Vaccine
+where location = 'India' AND total_vaccinations IS NOT NULL 
+order by date
+--ACC TO Data first day of vaccination was on 2021-01-16 with no of vaccinations as 191181
+
 
 
 
