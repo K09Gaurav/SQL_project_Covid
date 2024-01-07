@@ -17,6 +17,6 @@ All of this data represents the history of the pandemic Covid 19
 ## For Overall world
 
 1. Country with highest percentage wrt to their population was "San Marino" Population="33690"	total cases="25292"	    InfectionPercentage="75.0727218759276"
-21. Countriy with highest no of cases registered was United States	with population of "338289856" and cases ercorded: "103436829"
-22. country with highest death count was "United States" with 1144877 deaths
-23. country with highest no of vaccination is china with number of vaccinatoin  ="3491077000"
+2. Countriy with highest no of cases registered was United States	with population of "338289856" and cases ercorded: "103436829"
+3. country with highest death count was "United States" with 1144877 deaths
+4. country with highest no of vaccination is china with number of vaccinatoin  ="3491077000"
