@@ -121,32 +121,6 @@ order by VACCNINED DESC
 
 
 
-
--- Showing contintents with the highest death count per population
-
-Select continent, MAX(cast(Total_deaths as int)) as TotalDeathCount
-From [SQL_COVID].[dbo].[Deaths]
-Where continent is not null 
-Group by continent
-order by TotalDeathCount desc
-
-
---Continent with highest Death count
---> continent	TotalDeathCount North America	1144877
-
-Select TOP 1 continent, MAX(cast(Total_deaths as int)) as TotalDeathCount
-From [SQL_COVID].[dbo].[Deaths]
-Where continent is not null 
-Group by continent
-order by TotalDeathCount desc
-
-
-
-
-
-
-
-
 --NOW ANALYSING DATA of diff countries
 
 select location, population, MAX(total_cases) as highest_infection_count
@@ -195,3 +169,35 @@ from SQL_COVID..Vaccine
 group by location
 order by VACCNINED DESC
 --COUNTRY WITH HiGHEST NO OF VACCINATION IS CHINA WITH ="3491077000"
+
+
+
+
+
+
+-- Showing contintents with the highest death count per population
+
+Select continent, MAX(cast(Total_deaths as int)) as TotalDeathCount
+From [SQL_COVID].[dbo].[Deaths]
+Where continent is not null 
+Group by continent
+order by TotalDeathCount desc
+
+
+--Continent with highest Death count
+--> continent	TotalDeathCount North America	1144877
+
+Select TOP 1 continent, MAX(cast(Total_deaths as int)) as TotalDeathCount
+From [SQL_COVID].[dbo].[Deaths]
+Where continent is not null 
+Group by continent
+order by TotalDeathCount desc
+
+
+
+
+
+
+
+
+
