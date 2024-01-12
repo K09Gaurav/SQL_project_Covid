@@ -196,6 +196,13 @@ order by TotalDeathCount desc
 
 
 
+-->Continent with highest infection Rate
+--> continent is Europe	highest_infection_count=9900 InfectionPercentage= 75.0727218759276
+Select top 1 continent, population, MAX(total_cases) as highest_infection_count, MAX(total_cases/population)*100 as InfectionPercentage
+From [SQL_COVID].[dbo].[Deaths] 
+where continent is not null
+Group by continent, population
+order by InfectionPercentage desc
 
 
 
