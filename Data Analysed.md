@@ -23,3 +23,6 @@ All of this data represents the history of the pandemic Covid 19
 
 5. Continent with Highest Death count was North America	with 1144877 deaths
 6. Continent with highest infection Rate is Europe with	highest_infection_count=9900 and InfectionPercentage= 75.0727218759276 %
+
+### Other
+Rest of the information like trends can be obtained by running the queries and observibg the trends. 
