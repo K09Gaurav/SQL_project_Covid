@@ -20,3 +20,5 @@ All of this data represents the history of the pandemic Covid 19
 2. Countriy with highest no of cases registered was United States	with population of "338289856" and cases ercorded: "103436829"
 3. country with highest death count was "United States" with 1144877 deaths
 4. country with highest no of vaccination is china with number of vaccinatoin  ="3491077000"
+
+5. Continent with Highest Death count was North America	with 1144877 deaths
