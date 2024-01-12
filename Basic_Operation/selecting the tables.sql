@@ -210,12 +210,7 @@ order by InfectionPercentage desc
 
 
 
-
-
-
-
-
---Using Join to
+--Using Joins to
 
 --Selecting vaccination on the day and populations which are from diff tables.
 Select dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations
@@ -226,3 +221,33 @@ Join [SQL_COVID].[dbo].[Vaccine] vac
 where dea.continent is not null 
 order by 2,3
 
+
+
+-- Using Partition by
+-- To find Current no of total vaccinations
+
+Select dea.continent, dea.location, dea.date, dea.population,  vac.new_vaccinations,
+SUM(CONVERT(float,vac.new_vaccinations)) OVER (Partition by dea.Location Order by dea.location, dea.Date  ROWS UNBOUNDED PRECEDING) as [People Vaccinated till date]
+from [SQL_COVID].[dbo].[Deaths] dea
+Join [SQL_COVID].[dbo].[Vaccine] vac
+	on dea.continent = vac.continent
+	and dea.date = vac.date
+where dea.continent is not null
+order by dea.location
+
+--Calculating Percentage from it USING CTE(Common Table expression)
+--cannot use calculation on derived column
+
+With POPULATIONPERCT (Continent, Location, Date, Population, [New Vaccinations], [People Vaccinated till date])
+AS
+(
+Select dea.continent, dea.location, dea.date, dea.population,  vac.new_vaccinations,
+SUM(CONVERT(float,vac.new_vaccinations)) OVER (Partition by dea.Location Order by dea.location, dea.Date  ROWS UNBOUNDED PRECEDING) as [People Vaccinated till date]
+from [SQL_COVID].[dbo].[Deaths] dea
+Join [SQL_COVID].[dbo].[Vaccine] vac
+	on dea.continent = vac.continent
+	and dea.date = vac.date
+where dea.continent is not null and vac.new_vaccinations is not null
+)
+select *, ([People Vaccinated till date]/Population)*100 as [Percent People Vaccinated]
+from POPULATIONPERCT
