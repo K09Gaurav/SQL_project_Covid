@@ -122,7 +122,23 @@ order by VACCNINED DESC
 
 
 
+-- Showing contintents with the highest death count per population
 
+Select continent, MAX(cast(Total_deaths as int)) as TotalDeathCount
+From [SQL_COVID].[dbo].[Deaths]
+Where continent is not null 
+Group by continent
+order by TotalDeathCount desc
+
+
+--Continent with highest Death count
+--> continent	TotalDeathCount North America	1144877
+
+Select TOP 1 continent, MAX(cast(Total_deaths as int)) as TotalDeathCount
+From [SQL_COVID].[dbo].[Deaths]
+Where continent is not null 
+Group by continent
+order by TotalDeathCount desc
 
 
 
