@@ -242,7 +242,9 @@ With POPULATIONPERCT (Continent, Location, Date, Population, [New Vaccinations],
 AS
 (
 Select dea.continent, dea.location, dea.date, dea.population,  vac.new_vaccinations,
-SUM(CONVERT(float,vac.new_vaccinations)) OVER (Partition by dea.Location Order by dea.location, dea.Date  ROWS UNBOUNDED PRECEDING) as [People Vaccinated till date]
+SUM(CONVERT(float,vac.new_vaccinations)) 
+OVER (Partition by dea.Location Order by dea.location, dea.Date  ROWS UNBOUNDED PRECEDING)
+AS [People Vaccinated till date]
 from [SQL_COVID].[dbo].[Deaths] dea
 Join [SQL_COVID].[dbo].[Vaccine] vac
 	on dea.continent = vac.continent
@@ -251,3 +253,45 @@ where dea.continent is not null and vac.new_vaccinations is not null
 )
 select *, ([People Vaccinated till date]/Population)*100 as [Percent People Vaccinated]
 from POPULATIONPERCT
+
+/* We can also calculate The percentage using Temp Tables if we have more queries to run on resultant table
+Its better that using CTE because the table is stored in memory instead of getting executed each time.
+*/
+--Temp Tables
+
+--Creation of Temp Table
+
+Create Table #POPULATIONPERCT
+(
+Continent nvarchar(255),
+Location nvarchar(255),
+Date datetime,
+Population numeric,
+New_vaccinations numeric,
+[People Vaccinated till date] numeric
+);
+
+/* WE Can use drop table statement if we are using this as a stored procedure
+  Use the drop at the starting of query
+  DROP TABLE IF EXISTS #POPULATIONPERCT
+ */
+ 
+--Inserting Data into Temp table
+
+INSERT INTO #POPULATIONPERCT
+Select dea.continent, dea.location, dea.date, dea.population,  vac.new_vaccinations,
+SUM(CONVERT(float,vac.new_vaccinations)) 
+OVER (Partition by dea.Location Order by dea.location, dea.Date  ROWS UNBOUNDED PRECEDING) 
+as [People Vaccinated till date]
+FROM [SQL_COVID].[dbo].[Deaths] dea
+Join [SQL_COVID].[dbo].[Vaccine] vac
+	on dea.continent = vac.continent
+	and dea.date = vac.date
+where dea.continent is not null
+
+
+--Running the query
+
+select *, ([People Vaccinated till date]/Population)*100 as [Percent People Vaccinated]
+from #POPULATIONPERCT
+ORDER BY Location, DATE
