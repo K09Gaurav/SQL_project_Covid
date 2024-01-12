@@ -27,3 +27,17 @@ Before i begin, i ensured i had:
 - A working knowledge of SQL.
 - Access to a SQL database.
 - A tool for interacting with the database
+
+## Concepts used
+1. Select
+2. Join
+3. create and drop table
+4. use of where statements
+5. order by
+6. group by
+7. Having clause
+7. typecasting 
+8. max, min, avg, etc
+9. CTE
+10. Partition by
+11. Temp Tables
