@@ -17,8 +17,6 @@ The primary goals of this project are:
 
 3. **Data Exploration**: Explore the provided dataset to uncover meaningful patterns, trends, and insights related to the spread of COVID-19.
 
-4. **Visualization**: Develop visualizations that effectively communicate key findings, allowing for better comprehension and interpretation of the data.
-
 
 ### Prerequisites
 
